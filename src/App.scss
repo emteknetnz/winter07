@@ -1,0 +1,260 @@
+@import './styles/base.scss';
+@import './styles/dark-theme.scss';
+
+.app {
+  min-height: 100vh;
+  background-color: $bg-primary;
+  color: $text-primary;
+
+  &__header {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: $bg-secondary;
+    border-bottom: 2px solid $accent-primary;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $accent-primary;
+  }
+
+  &__main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  &__input-section {
+    margin-bottom: 3rem;
+  }
+
+  &__chart-section {
+    margin-bottom: 3rem;
+  }
+
+  &__table-section {
+    margin-bottom: 2rem;
+  }
+}
+
+.input-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: $bg-secondary;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  &__title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.75rem;
+    color: $text-primary;
+  }
+
+  &__group {
+    margin-bottom: 1.5rem;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $text-secondary;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: $text-primary;
+    background-color: $bg-primary;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: $accent-primary;
+    }
+
+    &--error {
+      border-color: $error-color;
+    }
+
+    &::placeholder {
+      color: $text-muted;
+    }
+  }
+
+  &__error {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: $error-color;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  &__button {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &--primary {
+      background-color: $accent-primary;
+      color: $bg-primary;
+
+      &:hover:not(:disabled) {
+        background-color: lighten($accent-primary, 10%);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background-color: $border-color;
+        color: $text-muted;
+        cursor: not-allowed;
+      }
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: $accent-secondary;
+      border: 2px solid $accent-secondary;
+
+      &:hover {
+        background-color: $accent-secondary;
+        color: $bg-primary;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+.growth-chart {
+  padding: 2rem;
+  background-color: $bg-secondary;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  &__container {
+    height: 400px;
+    position: relative;
+  }
+}
+
+.breakdown-table {
+  padding: 2rem;
+  background-color: $bg-secondary;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  &__title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.75rem;
+    color: $text-primary;
+  }
+
+  &__wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  &__head {
+    background-color: $bg-primary;
+  }
+
+  &__header {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: $accent-primary;
+    border-bottom: 2px solid $accent-primary;
+  }
+
+  &__body {
+    .breakdown-table__row:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    .breakdown-table__row:hover {
+      background-color: rgba(75, 192, 192, 0.1);
+    }
+  }
+
+  &__row {
+    transition: background-color 0.2s;
+  }
+
+  &__cell {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid $border-color;
+    color: $text-secondary;
+  }
+
+  &__summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: $bg-primary;
+    border-radius: 4px;
+  }
+
+  &__summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__summary-label {
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__summary-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $accent-primary;
+  }
+}
+
+@media (max-width: 768px) {
+  .app__title {
+    font-size: 1.75rem;
+  }
+
+  .input-form {
+    padding: 1.5rem;
+
+    &__actions {
+      flex-direction: column;
+    }
+  }
+
+  .growth-chart__container {
+    height: 300px;
+  }
+
+  .breakdown-table__summary {
+    grid-template-columns: 1fr;
+  }
+}
